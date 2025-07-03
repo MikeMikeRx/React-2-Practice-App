@@ -17,12 +17,13 @@ const App = () => {
     }else {
       console.log("Empty field")
     }
-    
+  
+    setFirstName("")
   }
 
 
  return <article>
-    <form onClick={formSubmit}>
+    <form>
       <div>
         <input 
         className="userName" 
@@ -32,12 +33,12 @@ const App = () => {
         />
         
 
-        <input type="Submit"/>
+        <input type="Submit" onClick={formSubmit}/>
       </div>
     </form>
 
     {names.map( (oneName, index)=>{
-      return <p key={index}>{oneName}</p>
+      return <p className="item" key={index}>{oneName}</p>
     })}
 
  </article>  
