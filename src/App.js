@@ -5,17 +5,21 @@ const App = () => {
 
   const formSubmit = (e)=>{
     e.preventDefault()
+    console.log(firstName)
   }
 
  return <article>
-    <form>
+    <form onClick={formSubmit}>
       <div>
         <input 
         className="userName" 
         type="text" placeholder="Name" 
-        value={firstName}/>
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        />
         
-        <input onClick={formSubmit} type="Submit"/>
+
+        <input type="Submit"/>
       </div>
     </form>
  </article>  
