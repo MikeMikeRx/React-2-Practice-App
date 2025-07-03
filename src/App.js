@@ -42,6 +42,16 @@ const App = () => {
 
       <input type="submit"/>
     </form>
+
+    {users.map( (oneUser, index) => {
+      const {fullName, email} = oneUser
+
+      return <div className="item" key={index}>
+        <h4>{fullName}</h4>
+        <p>{email}</p>
+      </div>
+    })}
+
   </article>
   
 }
