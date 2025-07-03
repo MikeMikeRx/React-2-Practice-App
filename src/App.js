@@ -2,7 +2,7 @@ const App = () => {
  return <article>
     <form>
       <div>
-        <input type="text" id="userName"placeholder="Name"/>
+        <input className="userName" type="text" id="userName"placeholder="Name"/>
         <input type="Submit" />
       </div>
     </form>

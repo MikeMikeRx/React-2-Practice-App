@@ -1,0 +1,26 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #141414;
+  color: aliceblue;
+}
+
+form > div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userName {
+  margin-bottom: 10px;
+  outline: none;
+}
+
+input[type="submit"] {
+  background-color: purple;
+  color: aliceblue;
+  border: none;
+  padding: 5px 10px;
+}
