@@ -1,26 +1,32 @@
 import { useState } from "react"
 
 const App = () => {
-  const [fullName, setFullName] = useState("")
-  const [email, setEmail] = useState("")
-  const [age, setAge] = useState ("")
+
+  const [oneUser,setOneUser] = useState({fullName: "", email: "", age: ""})
   const [users, setUsers] = useState([])
+
+  const formChange = (event) =>{
+    const name = event.target.name
+    const value = event.target.value
+
+    setOneUser({...oneUser, [name]: value })
+  }
 
   const formSubmit = (e)=>{
     e.preventDefault()
 
-    if (fullName && email && age) {
-      const oneUser = {fullName, email, age}    //{fullName: fullName, email: email, age: age}
+    if (oneUser.fullName && oneUser.email && oneUser.age) {
+      const newUser = {fullName: oneUser.fullName, email: oneUser.email, age: oneUser.age}  
       setUsers( (users)=> {
         return [...users, oneUser]
       })
     } else {
-      console.log("Fill the both fields")
+      console.log("Please fill in all fields")
     }
 
-    setFullName("")
-    setEmail("")
-    setAge ("")
+    // setFullName("")
+    // setEmail("")
+    // setAge ("")
 
   }
 
@@ -30,24 +36,27 @@ const App = () => {
       className="userInfo" 
       type="text" 
       placeholder="Name" 
-      value={fullName}
-      onChange={ (e)=> setFullName(e.target.value) }
+      value={oneUser.fullName}
+      onChange={formChange}
+      name="fullName"
       />
 
       <input 
       className="userInfo" 
       type="email" 
       placeholder="Email"
-      value={email}
-      onChange={ (e)=> setEmail(e.target.value) }
+      value={oneUser.email}
+      onChange={formChange}
+      name="email"
       />
 
       <input 
       className="userInfo" 
       type="number" 
       placeholder="Age"
-      value={age}
-      onChange={ (e)=> setAge(e.target.value) }
+      value={oneUser.age}
+      onChange={formChange}
+      name="age"
       />
 
       <input type="submit"/>
