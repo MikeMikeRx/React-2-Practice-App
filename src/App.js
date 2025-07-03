@@ -7,14 +7,39 @@ const App = () => {
 
   const formSubmit = (e)=>{
     e.preventDefault()
-    console.log("Form sent")
-  }
 
+    if (fullName && email) {
+      const oneUser = {fullName, email}    //{fullName: fullName, email: email }
+      setUsers( (users)=> {
+        return [...users, oneUser]
+      })
+    } else {
+      console.log("Fill the both fields")
+    }
+
+    setFullName("")
+    setEmail("")
+
+  }
 
   return <article>
     <form onSubmit={formSubmit}>
-      <input className="userInfo" type="text" placeholder="Name" />
-      <input className="userInfo" type="email" placeholder="Email"/>
+      <input 
+      className="userInfo" 
+      type="text" 
+      placeholder="Name" 
+      value={fullName}
+      onChange={ (e)=> setFullName(e.target.value) }
+      />
+
+      <input 
+      className="userInfo" 
+      type="email" 
+      placeholder="Email"
+      value={email}
+      onChange={ (e)=> setEmail(e.target.value) }
+      />
+
       <input type="submit"/>
     </form>
   </article>
