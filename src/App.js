@@ -1,12 +1,25 @@
 import { useState } from "react"
 
+const names = []
+
 const App = () => {
   const [firstName, setFirstName] = useState("")
+  const [names, setNames] = useState([])
+  
 
   const formSubmit = (e)=>{
     e.preventDefault()
-    console.log(firstName)
+
+    if (firstName){
+      setNames( (names) => {
+        return [...names, firstName] //<== Spread operator
+      })
+    }else {
+      console.log("Empty field")
+    }
+    
   }
+
 
  return <article>
     <form onClick={formSubmit}>
@@ -22,6 +35,11 @@ const App = () => {
         <input type="Submit"/>
       </div>
     </form>
+
+    {names.map( (oneName, index)=>{
+      return <p key={index}>{oneName}</p>
+    })}
+
  </article>  
 }
 
